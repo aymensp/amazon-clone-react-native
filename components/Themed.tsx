@@ -25,22 +25,22 @@ export function useThemeColor(
 
 type ThemeProps = {
   lightColor?: string;
-  darkColor?: string;
+  
 };
 
 export type TextProps = ThemeProps & DefaultText['props'];
 export type ViewProps = ThemeProps & DefaultView['props'];
 
 export function Text(props: TextProps) {
-  const { style, lightColor, darkColor, ...otherProps } = props;
-  const color = useThemeColor({ light: lightColor, dark: darkColor }, 'text');
+  const { style, lightColor, ...otherProps } = props;
+  const color = useThemeColor({ light: lightColor }, 'text');
 
   return <DefaultText style={[{ color }, style]} {...otherProps} />;
 }
 
 export function View(props: ViewProps) {
-  const { style, lightColor, darkColor, ...otherProps } = props;
-  const backgroundColor = useThemeColor({ light: lightColor, dark: darkColor }, 'background');
+  const { style, lightColor, ...otherProps } = props;
+  const backgroundColor = useThemeColor({ light: lightColor }, 'background');
 
   return <DefaultView style={[{ backgroundColor }, style]} {...otherProps} />;
 }
