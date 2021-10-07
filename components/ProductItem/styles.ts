@@ -18,7 +18,7 @@ export const styles = StyleSheet.create({
         flex: 3
     },
     title: {
-        fontSize: 16,
+        fontSize: 14,
         fontWeight: '400',
         lineHeight: 22
     },
@@ -28,16 +28,16 @@ export const styles = StyleSheet.create({
     },
     priceCurrency:{
         lineHeight: 25,
-        fontSize:10
+        fontSize:9
     },
     priceAmount: {
         fontWeight: "400",
-        fontSize: 20,
+        fontSize: 17,
     },
     oldPrice: {
         color: 'gray',
         fontWeight: 'normal',
-        fontSize: 14,
+        fontSize: 12,
         textDecorationLine: 'line-through',
 
     }
