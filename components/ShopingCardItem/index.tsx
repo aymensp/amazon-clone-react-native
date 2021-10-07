@@ -63,7 +63,7 @@ const ShoppingCardItem = ({ cardItem }: cardItemProps) => {
                 </View>
             </View>
             <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-                <QuantitySelector />
+                <QuantitySelector  />
                 <View style={styles.buttons} >
                     <Button
                         titleStyle={{ color: 'black', fontSize: 14 }}
