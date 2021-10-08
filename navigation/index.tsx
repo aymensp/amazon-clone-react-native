@@ -1,30 +1,23 @@
-/**
- * If you are not familiar with React Navigation, refer to the "Fundamentals" guide:
- * https://reactnavigation.org/docs/getting-started
- *
- */
-import { FontAwesome } from '@expo/vector-icons';
+import { AntDesign, Ionicons } from '@expo/vector-icons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { NavigationContainer, DefaultTheme, DarkTheme } from '@react-navigation/native';
+import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import * as React from 'react';
-import { ColorSchemeName, Pressable } from 'react-native';
-
-import Colors from '../constants/Colors';
-import useColorScheme from '../hooks/useColorScheme';
+import { Pressable, TextInput } from 'react-native';
 import ModalScreen from '../screens/ModalScreen';
 import NotFoundScreen from '../screens/NotFoundScreen';
 import HomeScreen from '../screens/HomeScreen';
-import ProductScreen from '../screens/ProductScren/index';
+import { LinearGradient } from 'expo-linear-gradient';
+import { View } from '../components/Themed';
 import { RootStackParamList, RootTabParamList, RootTabScreenProps } from '../types';
 import LinkingConfiguration from './LinkingConfiguration';
 import ShoppingCardScreen from '../screens/ShoppingCardScreen';
 
-export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeName }) {
+export default function Navigation() {
   return (
     <NavigationContainer
       linking={LinkingConfiguration}
-      theme={DefaultTheme}>
+    >
       <RootNavigator />
     </NavigationContainer>
   );
@@ -55,53 +48,91 @@ function RootNavigator() {
 const BottomTab = createBottomTabNavigator<RootTabParamList>();
 
 function BottomTabNavigator() {
-  const colorScheme = useColorScheme();
 
+  const headerGradient = (
+    <View style={{ height: 110, width: '100%' }}>
+      <LinearGradient locations={[0.2, 0.5, 1]} style={{ height: 100, width: '100%', flex: 1 }} colors={['#9bd4e0', '#a8dfd7', '#b2e5ce',]}>
+        <View style={{
+          display: 'flex',
+          flexDirection: "row",
+          alignItems: "center",
+          padding: 10,
+          backgroundColor: 'white', height: 45, width: "94%", marginTop: 55, marginHorizontal: 12, borderWidth: 1, borderColor: 'rgb(180, 184, 183)', borderRadius: 8
+        }}>
+          <AntDesign name='search1' size={20} color="black" />
+          <TextInput
+            style={{
+              flex: 0.80,
+              fontSize: 18,
+              margin: 10,
+              height: 40,
+              fontWeight: '500'
+            }}
+            placeholder="Search Amazon"
+            placeholderTextColor="gray"
+          />
+          <View style={{ flexDirection: 'row', justifyContent: 'space-around', flex: 0.25 }}>
+            <Ionicons name='scan-outline' size={22} color='gray' />
+            <Ionicons name="ios-mic-outline" size={24} color='gray' />
+          </View>
+
+        </View>
+      </LinearGradient>
+    </View>
+  )
+  const CustomTabButton = (props: any) => (
+    <Pressable
+      {...props}
+      style={
+        props.accessibilityState.selected
+          ? [props.style, { borderTopColor: '#3d7d8e', borderTopWidth: 4 }]
+          : props.style
+      }
+    />
+  );
   return (
     <BottomTab.Navigator
       initialRouteName="Home"
-      screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme].tint,
-      }}>
+      screenOptions={
+        {
+          headerTitle: '',
+          header: () => (headerGradient),
+          tabBarButton: CustomTabButton,
+          tabBarActiveTintColor: '#3d7d8e',
+          tabBarInactiveTintColor: 'black',
+          tabBarShowLabel: false,
+        }
+      }
+    >
       <BottomTab.Screen
         name="Home"
         component={HomeScreen}
         options={({ navigation }: RootTabScreenProps<'Home'>) => ({
-          
-          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
-          headerRight: () => (
-            <Pressable
-              onPress={() => navigation.navigate('Modal')}
-              style={({ pressed }) => ({
-                opacity: pressed ? 0.5 : 1,
-              })}>
-              <FontAwesome
-                name="info-circle"
-                size={25}
-                color={Colors[colorScheme].text}
-                style={{ marginRight: 15 }}
-              />
-            </Pressable>
-          ),
+          tabBarIcon: ({ color }) => <AntDesign name='home' color={color} size={22} />,
         })}
       />
       <BottomTab.Screen
         name="TabTwo"
         component={ShoppingCardScreen}
         options={{
-          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
+          tabBarIcon: ({ color }) => <Ionicons name="person-outline" size={24} color={color} />,
+        }}
+      />
+      <BottomTab.Screen
+        name="TabThree"
+        component={ShoppingCardScreen}
+        options={{
+          tabBarIcon: ({ color }) => <AntDesign name='shoppingcart' size={24} color={color} />,
+        }}
+      />
+      <BottomTab.Screen
+        name="TabFour"
+        component={ShoppingCardScreen}
+        options={{
+          tabBarIcon: ({ color }) => <Ionicons name='menu-outline' size={24} color={color} />,
         }}
       />
     </BottomTab.Navigator>
   );
 }
 
-/**
- * You can explore the built-in icon families and icons on the web at https://icons.expo.fyi/
- */
-function TabBarIcon(props: {
-  name: React.ComponentProps<typeof FontAwesome>['name'];
-  color: string;
-}) {
-  return <FontAwesome size={30} style={{ marginBottom: -3 }} {...props} />;
-}
