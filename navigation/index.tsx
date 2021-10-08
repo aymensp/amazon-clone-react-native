@@ -12,6 +12,7 @@ import { View } from '../components/Themed';
 import { RootStackParamList, RootTabParamList, RootTabScreenProps } from '../types';
 import LinkingConfiguration from './LinkingConfiguration';
 import ShoppingCardScreen from '../screens/ShoppingCardScreen';
+import ProductScreen from '../screens/ProductScren';
 
 export default function Navigation() {
   return (
@@ -45,41 +46,55 @@ function RootNavigator() {
  * A bottom tab navigator displays tab buttons on the bottom of the display to switch screens.
  * https://reactnavigation.org/docs/bottom-tab-navigator
  */
+const headerGradient = (
+  <View style={{ height: 110, width: '100%' }}>
+    <LinearGradient start={[0.0, 0.5]} end={[0.6, 0.8]} locations={[0.2, 0.5, 1]} style={{ height: 110, width: '100%', flex: 1 }} colors={['#9bd4e0', '#a8dfd7', '#b2e5ce',]}>
+      <View style={{
+        display: 'flex',
+        flexDirection: "row",
+        alignItems: "center",
+        padding: 10,
+        backgroundColor: 'white', height: 45, width: "94%", marginTop: 55, marginHorizontal: 12, borderWidth: 1, borderColor: 'rgb(180, 184, 183)', borderRadius: 8
+      }}>
+        <AntDesign name='search1' size={20} color="black" />
+        <TextInput
+          style={{
+            flex: 0.80,
+            fontSize: 18,
+            margin: 10,
+            height: 40,
+            fontWeight: '500'
+          }}
+          placeholder="Search Amazon"
+          placeholderTextColor="gray"
+        />
+        <View style={{ flexDirection: 'row', justifyContent: 'space-around', flex: 0.25 }}>
+          <Ionicons name='scan-outline' size={22} color='gray' />
+          <Ionicons name="ios-mic-outline" size={24} color='gray' />
+        </View>
+
+      </View>
+    </LinearGradient>
+  </View>
+)
+
+const HomeTab = createNativeStackNavigator<RootTabParamList>();
+function HomeScreenStack() {
+  return (
+    <HomeTab.Navigator
+      screenOptions={{
+        headerShown: false
+      }}
+    >
+      <HomeTab.Screen name='Home' component={HomeScreen} />
+      <HomeTab.Screen name='Details' component={ProductScreen} />
+    </HomeTab.Navigator>
+  )
+}
 const BottomTab = createBottomTabNavigator<RootTabParamList>();
 
 function BottomTabNavigator() {
 
-  const headerGradient = (
-    <View style={{ height: 110, width: '100%' }}>
-      <LinearGradient locations={[0.2, 0.5, 1]} style={{ height: 100, width: '100%', flex: 1 }} colors={['#9bd4e0', '#a8dfd7', '#b2e5ce',]}>
-        <View style={{
-          display: 'flex',
-          flexDirection: "row",
-          alignItems: "center",
-          padding: 10,
-          backgroundColor: 'white', height: 45, width: "94%", marginTop: 55, marginHorizontal: 12, borderWidth: 1, borderColor: 'rgb(180, 184, 183)', borderRadius: 8
-        }}>
-          <AntDesign name='search1' size={20} color="black" />
-          <TextInput
-            style={{
-              flex: 0.80,
-              fontSize: 18,
-              margin: 10,
-              height: 40,
-              fontWeight: '500'
-            }}
-            placeholder="Search Amazon"
-            placeholderTextColor="gray"
-          />
-          <View style={{ flexDirection: 'row', justifyContent: 'space-around', flex: 0.25 }}>
-            <Ionicons name='scan-outline' size={22} color='gray' />
-            <Ionicons name="ios-mic-outline" size={24} color='gray' />
-          </View>
-
-        </View>
-      </LinearGradient>
-    </View>
-  )
   const CustomTabButton = (props: any) => (
     <Pressable
       {...props}
@@ -104,9 +119,10 @@ function BottomTabNavigator() {
         }
       }
     >
+
       <BottomTab.Screen
         name="Home"
-        component={HomeScreen}
+        component={HomeScreenStack}
         options={({ navigation }: RootTabScreenProps<'Home'>) => ({
           tabBarIcon: ({ color }) => <AntDesign name='home' color={color} size={22} />,
         })}

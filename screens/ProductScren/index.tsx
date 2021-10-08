@@ -1,12 +1,13 @@
 import React from 'react'
 import { Image, Text, View } from 'react-native'
 import { styles } from './styles'
-import product from '../../assets/data/product'
-import { AntDesign, FontAwesome, Ionicons } from '@expo/vector-icons'
+import {  FontAwesome } from '@expo/vector-icons'
 import { ScrollView } from 'react-native-gesture-handler'
 import { Button } from 'react-native-elements'
+import {  RootTabScreenProps } from '../../types'
 
-const ProductScreen = () => {
+const ProductScreen = ({route, navigation }: RootTabScreenProps<'Details'>) => {
+    const product = route.params
     return (
         <ScrollView>
             <View style={styles.container}>
@@ -33,7 +34,11 @@ const ProductScreen = () => {
             <View style={styles.seperator} />
             <View style={styles.container}>
                 <Text style={{fontSize:16 ,lineHeight:22}}>
-                    {product.description}
+                Features & details
+  - MAGSPEED WHEEL: Ultra-fast, precise, quiet MagSpeed electromagnetic scrolling
+  - DARKFIELD 4000 DPI SENSOR: Darkfield 4000 DPI sensor for precise tracking on any surface, even glass (up to 4mm in thickness)
+  - COMFORTABLE DESIGN: Tactile reference for hand positioning makes it easy to stay oriented and in your flow
+  - FLOW CROSS-COMPUTER CONTROL: Supports flow cross-computer control across multiple screens. Pair up to 3 devices via Bluetooth Low Energy or Unifying USB receiver
                 </Text>
             </View>
             <View style={styles.seperator} />

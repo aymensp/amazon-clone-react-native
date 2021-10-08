@@ -16,11 +16,12 @@ interface ProductItemProps {
     }
 }
 
-const ProductItem = ({ item }: ProductItemProps) => {
+const ProductItem = ({ item }: ProductItemProps ) => {
 
     return (
         <View style={styles.column}
             key={item.id}
+            
         >
             <Image
                 style={styles.image}
