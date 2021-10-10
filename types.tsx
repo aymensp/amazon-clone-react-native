@@ -34,7 +34,8 @@ interface ProductItemProps {
   oldPrice?: number
 }
 export type RootTabParamList = {
-  Home: ProductItemProps;
+  HomeStack: undefined;
+  Home:ProductItemProps;
   TabTwo: undefined;
   TabThree: undefined;
   Details: ProductItemProps;

@@ -10,6 +10,11 @@
       "StackName": "amplify-amazonclone-dev-231447",
       "StackId": "arn:aws:cloudformation:eu-central-1:297519655530:stack/amplify-amazonclone-dev-231447/83beb290-2a17-11ec-afd8-06c1e5379766",
       "AmplifyAppId": "d24e6ptnhf6uvu"
+    },
+    "categories": {
+      "auth": {
+        "amazonclone75c795ce": {}
+      }
     }
   }
 }
