@@ -107,7 +107,7 @@ function BottomTabNavigator() {
   );
   return (
     <BottomTab.Navigator
-      initialRouteName="Home"
+      initialRouteName="HomeStack"
       screenOptions={
         {
           headerTitle: '',
@@ -121,9 +121,9 @@ function BottomTabNavigator() {
     >
 
       <BottomTab.Screen
-        name="Home"
+        name="HomeStack"
         component={HomeScreenStack}
-        options={({ navigation }: RootTabScreenProps<'Home'>) => ({
+        options={({ navigation }: RootTabScreenProps<'HomeStack'>) => ({
           tabBarIcon: ({ color }) => <AntDesign name='home' color={color} size={22} />,
         })}
       />
