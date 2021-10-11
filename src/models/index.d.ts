@@ -31,6 +31,7 @@ export declare class Product {
 
 export declare class CartProduct {
   readonly id: string;
+  readonly userSub: string;
   readonly qunatity: number;
   readonly option?: string;
   readonly productID: string;

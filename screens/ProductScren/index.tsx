@@ -5,9 +5,28 @@ import {  FontAwesome } from '@expo/vector-icons'
 import { ScrollView } from 'react-native-gesture-handler'
 import { Button } from 'react-native-elements'
 import {  RootTabScreenProps } from '../../types'
+import Auth from '@aws-amplify/auth'
+import { CartProduct } from '../../src/models'
+import { DataStore } from '@aws-amplify/datastore'
 
 const ProductScreen = ({route, navigation }: RootTabScreenProps<'Details'>) => {
     const product = route.params
+    const onAddToCart = async ()=> {
+    const userData = await Auth.currentAuthenticatedUser();
+    if(!userData || !product) {
+        return;
+    }
+    const newCartProduct = new CartProduct({
+        userSub: userData.attributes.sub,
+        qunatity: 3,
+        option: 'Black',
+        productID: product.id
+    })
+
+    await DataStore.save(newCartProduct);
+    navigation.navigate("TabThree")
+}
+
     return (
         <ScrollView>
             <View style={styles.container}>

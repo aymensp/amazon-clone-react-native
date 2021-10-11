@@ -102,6 +102,7 @@ export const syncCartProducts = /* GraphQL */ `
     ) {
       items {
         id
+        userSub
         qunatity
         option
         productID
@@ -137,6 +138,7 @@ export const getCartProduct = /* GraphQL */ `
   query GetCartProduct($id: ID!) {
     getCartProduct(id: $id) {
       id
+      userSub
       qunatity
       option
       productID
@@ -174,6 +176,7 @@ export const listCartProducts = /* GraphQL */ `
     listCartProducts(filter: $filter, limit: $limit, nextToken: $nextToken) {
       items {
         id
+        userSub
         qunatity
         option
         productID

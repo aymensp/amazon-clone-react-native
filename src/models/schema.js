@@ -127,6 +127,13 @@ export const schema = {
                     "isRequired": true,
                     "attributes": []
                 },
+                "userSub": {
+                    "name": "userSub",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": true,
+                    "attributes": []
+                },
                 "qunatity": {
                     "name": "qunatity",
                     "isArray": false,
@@ -207,5 +214,5 @@ export const schema = {
     },
     "enums": {},
     "nonModels": {},
-    "version": "70d0f4aa4facaedc9b8f4f789a58f6b8"
+    "version": "6e2a532ee88fdff62ad16a10e43290dd"
 };

@@ -15,6 +15,7 @@ type Product @model @auth(rules: [{allow: public}]){
 
 type CartProduct @model @auth(rules: [{allow: public}])  {
   id: ID!
+  userSub: String!
   qunatity: Int!
   option: String
   productID: ID!
