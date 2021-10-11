@@ -3,20 +3,21 @@ import { Image } from 'react-native'
 import { FontAwesome } from '@expo/vector-icons';
 import { Text, View } from '../../components/Themed';
 import { styles } from './styles'
+import { Product } from '../../src/models';
 
 interface ProductItemProps {
     item: {
         id: string,
         title: string,
         image: string,
-        avgRating: number,
+        avgRatingg: number,
         ratings: number,
         price: number,
-        oldPrice?: number
+        oldPrice: number
     }
 }
 
-const ProductItem = ({ item }: ProductItemProps ) => {
+const ProductItem = ({item} : ProductItemProps ) => {
 
     return (
         <View style={styles.column}
@@ -38,7 +39,7 @@ const ProductItem = ({ item }: ProductItemProps ) => {
                 </Text>
                 <View style={{ flexDirection: 'row', alignItems: 'center' }}>
                     {[0, 0, 0, 0, 0].map((el,index) =>
-                    <FontAwesome key={index} name={index< Math.floor(item.avgRating)? 'star' : 'star-o'} size={16} color={"#f78d24"} />
+                    <FontAwesome key={index} name={index< Math.floor(item.avgRatingg)? 'star' : 'star-o'} size={16} color={"#f78d24"} />
                     )
                     }
 

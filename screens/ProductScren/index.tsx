@@ -16,7 +16,7 @@ const ProductScreen = ({route, navigation }: RootTabScreenProps<'Details'>) => {
                     <View style={styles.ratingContainer}>
                         <View style={{ flexDirection: 'row' }}>
                             {[0, 0, 0, 0, 0].map((el, index) =>
-                                <FontAwesome key={index} name={index < Math.floor(product.avgRating) ? 'star' : 'star-o'} size={12} color={"#f78d24"} />
+                                <FontAwesome key={index} name={index < Math.floor(Number(product.avgRatingg)) ? 'star' : 'star-o'} size={12} color={"#f78d24"} />
                             )}
                         </View>
                         <Text style={styles.store}>{product.ratings}</Text>

@@ -6,6 +6,7 @@
 import { BottomTabScreenProps } from '@react-navigation/bottom-tabs';
 import { CompositeScreenProps, NavigatorScreenParams } from '@react-navigation/native';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
+import { Product } from './src/models';
 
 declare global {
   namespace ReactNavigation {
@@ -24,21 +25,13 @@ export type RootStackScreenProps<Screen extends keyof RootStackParamList> = Nati
   RootStackParamList,
   Screen
 >;
-interface ProductItemProps {
-  id: string,
-  title: string,
-  image: string,
-  avgRating: number,
-  ratings: number,
-  price: number,
-  oldPrice?: number
-}
+
 export type RootTabParamList = {
   HomeStack: undefined;
-  Home:ProductItemProps;
+  Home: Product;
   TabTwo: undefined;
   TabThree: undefined;
-  Details: ProductItemProps;
+  Details: Product;
   TabFour: undefined
 };
 
