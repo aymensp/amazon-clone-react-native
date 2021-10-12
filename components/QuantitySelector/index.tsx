@@ -4,6 +4,7 @@ import React, { useState } from 'react'
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native'
 
 const QuantitySelector = () => {
+
     const [quantity, setquantity] = useState(1)
     const ChangeQte = (action: string) => {
         if (action === "plus") {

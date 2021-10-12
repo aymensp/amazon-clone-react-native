@@ -27,7 +27,6 @@ export const styles = StyleSheet.create({
         resizeMode: 'contain'
     },
     seperator: {
-        width: "500",
         height: 5,
         backgroundColor: '#d7d9d9'
     }, price: {

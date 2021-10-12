@@ -1,31 +1,33 @@
 import React from 'react'
-import { Image, Text, View } from 'react-native'
+import { Alert, Image, Text, View } from 'react-native'
 import { styles } from './styles'
-import {  FontAwesome } from '@expo/vector-icons'
+import { FontAwesome } from '@expo/vector-icons'
 import { ScrollView } from 'react-native-gesture-handler'
 import { Button } from 'react-native-elements'
-import {  RootTabScreenProps } from '../../types'
+import { RootTabScreenProps } from '../../types'
 import Auth from '@aws-amplify/auth'
 import { CartProduct } from '../../src/models'
 import { DataStore } from '@aws-amplify/datastore'
 
-const ProductScreen = ({route, navigation }: RootTabScreenProps<'Details'>) => {
+const ProductScreen = ({ route, navigation }: RootTabScreenProps<'Details'>) => {
     const product = route.params
-    const onAddToCart = async ()=> {
-    const userData = await Auth.currentAuthenticatedUser();
-    if(!userData || !product) {
-        return;
-    }
-    const newCartProduct = new CartProduct({
-        userSub: userData.attributes.sub,
-        qunatity: 3,
-        option: 'Black',
-        productID: product.id
-    })
+    const onAddToCart = async () => {
+        const userData = await Auth.currentAuthenticatedUser();
+        if (!userData || !product) {
+            return;
+        }
+        const newCartProduct = new CartProduct({
+            userSub: userData.attributes.sub,
+            qunatity: 1,
+            option: 'Black',
+            productID: product.id
+        })
 
-    await DataStore.save(newCartProduct);
-    navigation.navigate("TabThree")
-}
+        await DataStore.save(newCartProduct)
+            .then(() => navigation.navigate("TabThree"))
+            .catch((error) => alert(error));
+
+    }
 
     return (
         <ScrollView>
@@ -52,12 +54,12 @@ const ProductScreen = ({route, navigation }: RootTabScreenProps<'Details'>) => {
             </View>
             <View style={styles.seperator} />
             <View style={styles.container}>
-                <Text style={{fontSize:16 ,lineHeight:22}}>
-                Features & details
-  - MAGSPEED WHEEL: Ultra-fast, precise, quiet MagSpeed electromagnetic scrolling
-  - DARKFIELD 4000 DPI SENSOR: Darkfield 4000 DPI sensor for precise tracking on any surface, even glass (up to 4mm in thickness)
-  - COMFORTABLE DESIGN: Tactile reference for hand positioning makes it easy to stay oriented and in your flow
-  - FLOW CROSS-COMPUTER CONTROL: Supports flow cross-computer control across multiple screens. Pair up to 3 devices via Bluetooth Low Energy or Unifying USB receiver
+                <Text style={{ fontSize: 16, lineHeight: 22 }}>
+                    Features  details
+                    - MAGSPEED WHEEL: Ultra-fast, precise, quiet MagSpeed electromagnetic scrolling
+                    - DARKFIELD 4000 DPI SENSOR: Darkfield 4000 DPI sensor for precise tracking on any surface, even glass (up to 4mm in thickness)
+                    - COMFORTABLE DESIGN: Tactile reference for hand positioning makes it easy to stay oriented and in your flow
+                    - FLOW CROSS-COMPUTER CONTROL: Supports flow cross-computer control across multiple screens. Pair up to 3 devices via Bluetooth Low Energy or Unifying USB receiver
                 </Text>
             </View>
             <View style={styles.seperator} />
@@ -90,6 +92,7 @@ const ProductScreen = ({route, navigation }: RootTabScreenProps<'Details'>) => {
                             buttonStyle={{ backgroundColor: '#FFD814', borderRadius: 10, height: 45 }}
                             titleStyle={{ color: 'black' }}
                             title="Add to Cart"
+                            onPress={onAddToCart}
                         />
                         <View style={{ height: 10 }} />
                         <Button
@@ -102,8 +105,8 @@ const ProductScreen = ({route, navigation }: RootTabScreenProps<'Details'>) => {
 
 
             </View>
-           
-         
+
+
         </ScrollView >
     )
 }

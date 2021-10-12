@@ -4,23 +4,16 @@ import { Image } from 'react-native'
 import { Text, View } from '../../components/Themed';
 import QuantitySelector from '../QuantitySelector';
 import { Button } from 'react-native-elements';
+import { Product } from '../../src/models';
 
 
 interface cardItemProps {
     cardItem: {
         id: string,
-        quantity: number,
+        qunatity: number,
         option?: string,
-        item: {
-            id: string,
-            title: string,
-            image: string,
-            avgRating: number
-            ratings: number,
-            price: number,
-            oldPrice?: number
-        }
-
+        productId: string,
+        product: Product
     }
 }
 const ShoppingCardItem = ({ cardItem }: cardItemProps) => {
@@ -29,8 +22,8 @@ const ShoppingCardItem = ({ cardItem }: cardItemProps) => {
             borderBottomWidth: 0.5,
             borderBottomColor: "#d1d1d1",
             padding: 12
-        }} 
-        key={cardItem.id}
+        }}
+            key={cardItem.id}
         >
             <View style={styles.column}
 
@@ -38,7 +31,7 @@ const ShoppingCardItem = ({ cardItem }: cardItemProps) => {
                 <Image
                     style={styles.image}
                     source={{
-                        uri: cardItem.item.image
+                        uri: cardItem.product.image
                     }}
                 />
                 <View style={styles.details}>
@@ -46,7 +39,7 @@ const ShoppingCardItem = ({ cardItem }: cardItemProps) => {
                         style={styles.title}
                         numberOfLines={2}
                     >
-                        {cardItem.item.title}
+                        {cardItem.product.title}
                     </Text>
 
                     <View style={styles.price}>
@@ -56,14 +49,14 @@ const ShoppingCardItem = ({ cardItem }: cardItemProps) => {
                         <Text
                             style={styles.priceAmount}
                         >
-                            {cardItem.item.price}
+                            {cardItem.product.price}
                         </Text>
                     </View>
                     <Text style={{ fontSize: 14, fontWeight: "500", color: 'green' }}>In Stock.</Text>
                 </View>
             </View>
             <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-                <QuantitySelector  />
+                <QuantitySelector />
                 <View style={styles.buttons} >
                     <Button
                         titleStyle={{ color: 'black', fontSize: 14 }}
