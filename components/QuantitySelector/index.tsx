@@ -3,16 +3,14 @@ import { LinearGradient } from 'expo-linear-gradient'
 import React, { useState } from 'react'
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native'
 
-const QuantitySelector = () => {
+const QuantitySelector = ({quantity,setQuantity,deleteAction}:any) => {
 
-    const [quantity, setquantity] = useState(1)
     const ChangeQte = (action: string) => {
         if (action === "plus") {
-            setquantity(quantity + 1)
+            setQuantity(quantity + 1)
         }
         else if (quantity > 1) {
-            setquantity(quantity - 1)
-        }
+            setQuantity(Math.max(0, quantity - 1));        }
     }
     return (
         <View style={styles.container}>
@@ -20,7 +18,7 @@ const QuantitySelector = () => {
                 // Button Linear Gradient
                 colors={['#f7f8fa', '#e7e9ec']}
                 style={styles.button}>
-                <TouchableOpacity style={styles.button} onPress={quantity===1 ? ()=>console.log("delete"): () => ChangeQte('minus')}>
+                <TouchableOpacity style={styles.button} onPress={quantity===1 ? ()=>deleteAction(): () => ChangeQte('minus')}>
                     {quantity === 1 ? <FontAwesome size={18} name='trash-o' /> : <Text style={styles.buttonText}>-</Text>}
                 </TouchableOpacity>
             </LinearGradient>

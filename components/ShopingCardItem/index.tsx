@@ -4,19 +4,31 @@ import { Image } from 'react-native'
 import { Text, View } from '../../components/Themed';
 import QuantitySelector from '../QuantitySelector';
 import { Button } from 'react-native-elements';
-import { Product } from '../../src/models';
+import { CartProduct, Product } from '../../src/models';
+import { DataStore } from '@aws-amplify/datastore';
+import ProductItem from '../ProductItem';
 
 
 interface cardItemProps {
-    cardItem: {
-        id: string,
-        qunatity: number,
-        option?: string,
-        productId: string,
-        product: Product
-    }
+    cardItem: CartProduct
 }
 const ShoppingCardItem = ({ cardItem }: cardItemProps) => {
+    const { product, ...cartProduct } = cardItem;
+
+    const updateQuantity = async (newQuantity: number) => {
+        const original = await DataStore.query(CartProduct, cartProduct.id);
+
+        await DataStore.save(
+            CartProduct.copyOf(original, updated => {
+                updated.qunatity = newQuantity;
+            }),
+        );
+    };
+    const deleteItem = async (id:string) => {
+
+        const todelete = await DataStore.query(CartProduct,id);
+        await DataStore.delete(todelete);
+    };
     return (
         <View style={{
             borderBottomWidth: 0.5,
@@ -31,7 +43,7 @@ const ShoppingCardItem = ({ cardItem }: cardItemProps) => {
                 <Image
                     style={styles.image}
                     source={{
-                        uri: cardItem.product.image
+                        uri: product?.image
                     }}
                 />
                 <View style={styles.details}>
@@ -39,7 +51,7 @@ const ShoppingCardItem = ({ cardItem }: cardItemProps) => {
                         style={styles.title}
                         numberOfLines={2}
                     >
-                        {cardItem.product.title}
+                        {product?.title}
                     </Text>
 
                     <View style={styles.price}>
@@ -49,22 +61,22 @@ const ShoppingCardItem = ({ cardItem }: cardItemProps) => {
                         <Text
                             style={styles.priceAmount}
                         >
-                            {cardItem.product.price}
+                            {product?.price}
                         </Text>
                     </View>
                     <Text style={{ fontSize: 14, fontWeight: "500", color: 'green' }}>In Stock.</Text>
                 </View>
             </View>
             <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-                <QuantitySelector />
+                <QuantitySelector quantity={cartProduct.qunatity} setQuantity={updateQuantity} deleteAction={()=>deleteItem(cartProduct.id)} />
                 <View style={styles.buttons} >
                     <Button
                         titleStyle={{ color: 'black', fontSize: 14 }}
                         title='Delete'
                         buttonStyle={styles.button}
+                        onPress={()=>deleteItem(cartProduct.id)}
                     />
                     <Button
-
                         titleStyle={{ color: 'black', fontSize: 14 }}
                         title='Save for later'
                         buttonStyle={styles.button} />
