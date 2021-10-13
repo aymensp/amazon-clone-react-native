@@ -13,6 +13,7 @@ import { RootStackParamList, RootTabParamList, RootTabScreenProps } from '../typ
 import LinkingConfiguration from './LinkingConfiguration';
 import ShoppingCardScreen from '../screens/ShoppingCardScreen';
 import ProductScreen from '../screens/ProductScren';
+import AddAdressScreen from '../screens/AddAdressScreen';
 
 export default function Navigation() {
   return (
@@ -135,7 +136,7 @@ function BottomTabNavigator() {
         }}
       />
       <BottomTab.Screen
-        name="TabThree"
+        name="ShoppingCardStack"
         component={ShoppingCardScreen}
         options={{
           tabBarIcon: ({ color }) => <AntDesign name='shoppingcart' size={24} color={color} />,
@@ -143,7 +144,7 @@ function BottomTabNavigator() {
       />
       <BottomTab.Screen
         name="TabFour"
-        component={ShoppingCardScreen}
+        component={AddAdressScreen}
         options={{
           tabBarIcon: ({ color }) => <Ionicons name='menu-outline' size={24} color={color} />,
         }}

@@ -30,7 +30,7 @@ export type RootTabParamList = {
   HomeStack: undefined;
   Home: Product;
   TabTwo: undefined;
-  TabThree: undefined;
+  ShoppingCardStack: undefined;
   Details: Product;
   TabFour: undefined
 };

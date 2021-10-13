@@ -24,10 +24,8 @@ const ShoppingCardItem = ({ cardItem }: cardItemProps) => {
             }),
         );
     };
-    const deleteItem = async (id:string) => {
-
-        const todelete = await DataStore.query(CartProduct,id);
-        await DataStore.delete(todelete);
+    const deleteItem = async (id: string) => {
+        await DataStore.delete(CartProduct, id)
     };
     return (
         <View style={{
@@ -61,20 +59,20 @@ const ShoppingCardItem = ({ cardItem }: cardItemProps) => {
                         <Text
                             style={styles.priceAmount}
                         >
-                            {product?.price}
+                            {product?.price.toFixed(2)}
                         </Text>
                     </View>
                     <Text style={{ fontSize: 14, fontWeight: "500", color: 'green' }}>In Stock.</Text>
                 </View>
             </View>
             <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-                <QuantitySelector quantity={cartProduct.qunatity} setQuantity={updateQuantity} deleteAction={()=>deleteItem(cartProduct.id)} />
+                <QuantitySelector quantity={cartProduct.qunatity} setQuantity={updateQuantity} deleteAction={() => deleteItem(cartProduct.id)} />
                 <View style={styles.buttons} >
                     <Button
                         titleStyle={{ color: 'black', fontSize: 14 }}
                         title='Delete'
                         buttonStyle={styles.button}
-                        onPress={()=>deleteItem(cartProduct.id)}
+                        onPress={() => deleteItem(cartProduct.id)}
                     />
                     <Button
                         titleStyle={{ color: 'black', fontSize: 14 }}

@@ -6,15 +6,7 @@ import { styles } from './styles'
 import { Product } from '../../src/models';
 
 interface ProductItemProps {
-    item: {
-        id: string,
-        title: string,
-        image: string,
-        avgRatingg: number,
-        ratings: number,
-        price: number,
-        oldPrice: number
-    }
+    item: Product
 }
 
 const ProductItem = ({item} : ProductItemProps ) => {
@@ -39,7 +31,7 @@ const ProductItem = ({item} : ProductItemProps ) => {
                 </Text>
                 <View style={{ flexDirection: 'row', alignItems: 'center' }}>
                     {[0, 0, 0, 0, 0].map((el,index) =>
-                    <FontAwesome key={index} name={index< Math.floor(item.avgRatingg)? 'star' : 'star-o'} size={16} color={"#f78d24"} />
+                    <FontAwesome key={index} name={index< Math.floor(Number(item.avgRatingg))? 'star' : 'star-o'} size={16} color={"#f78d24"} />
                     )
                     }
 
@@ -54,9 +46,9 @@ const ProductItem = ({item} : ProductItemProps ) => {
                     <Text
                         style={styles.priceAmount}
                     >
-                        {item.price}
+                        {item.price.toFixed(2)}
                     </Text>
-                    {item.oldPrice ? <Text style={styles.oldPrice}> ${item.oldPrice}</Text> : null}
+                    {item.oldPrice ? <Text style={styles.oldPrice}> ${item.oldPrice.toFixed(2)}</Text> : null}
                 </View>
 
             </View>

@@ -24,7 +24,7 @@ const ProductScreen = ({ route, navigation }: RootTabScreenProps<'Details'>) => 
         })
 
         await DataStore.save(newCartProduct)
-            .then(() => navigation.navigate("TabThree"))
+            .then(() => navigation.navigate("ShoppingCardStack"))
             .catch((error) => alert(error));
 
     }
