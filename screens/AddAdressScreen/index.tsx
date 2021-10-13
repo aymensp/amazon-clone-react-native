@@ -6,6 +6,8 @@ import {
     Platform,
 } from 'react-native'
 import { Button } from 'react-native-elements'
+import { Order } from '../../src/models'
+import { OrderProduct } from '../../src/models'
 import { CartProduct } from '../../src/models'
 import { RootTabScreenProps } from '../../types'
 import { styles } from './styles'
