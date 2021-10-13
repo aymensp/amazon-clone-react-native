@@ -71,11 +71,11 @@ const ProductScreen = ({ route, navigation }: RootTabScreenProps<'Details'>) => 
                     <Text
                         style={styles.priceAmount}
                     >
-                        {product.price}
+                        {product.price.toFixed(2)}
                     </Text>
-                    {product.oldPrice ? <Text style={styles.oldPrice}> ${product.oldPrice}</Text> : null}
+                    {product.oldPrice ? <Text style={styles.oldPrice}> ${product.oldPrice.toFixed(2)}</Text> : null}
                 </View>
-                <Text style={styles.totalCoast}>Estimated Total cost: $ {product.oldPrice} </Text>
+                <Text style={styles.totalCoast}>Estimated Total cost: $ {product.oldPrice?.toFixed(2)} </Text>
 
                 <View style={{ height: 260, justifyContent: 'space-between' }}>
                     <Text style={{ fontSize: 16 }}>Arrives:
