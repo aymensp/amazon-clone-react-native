@@ -12,8 +12,7 @@ import countryList from 'country-list';
 import Modal from "react-native-modal";
 import { Button } from 'react-native-elements'
 import { Order } from '../../src/models'
-import { OrderProduct } from '../../src/models'
-import { CartProduct } from '../../src/models'
+import { OrderProduct, CartProduct } from '../../src/models'
 import { RootTabScreenProps } from '../../types'
 import { styles } from './styles'
 import { ScrollView } from 'react-native';
@@ -110,16 +109,18 @@ const AddAdressScreen = ({ navigation }: RootTabScreenProps<'Home'>) => {
           </View>
         </Modal>
         <Pressable onPress={toggleModal} >
-          <View style={styles.input}>
+          <View style={[styles.input, styles.countriesLabel]}>
             <Text style={{ fontSize: 18 }}>
               {country}
             </Text>
+            <Ionicons name='chevron-down-outline' color='black' size={25} />
           </View>
         </Pressable>
         <Text style={styles.label}>Full name (First and Last name)</Text>
         <TextInput
           style={styles.input}
           placeholder='John Doe'
+          placeholderTextColor='gray'
           value={fullname}
           onChangeText={setFullname}
         />
@@ -127,21 +128,24 @@ const AddAdressScreen = ({ navigation }: RootTabScreenProps<'Home'>) => {
         <TextInput
           style={styles.input}
           placeholder='+49 8783 3876'
+          placeholderTextColor='gray'
           value={phone}
           onChangeText={setPhone}
           keyboardType={'phone-pad'}
         />
         <Text style={styles.label}>Address</Text>
-        <View style={{ marginBottom: 10, borderBottomColor: 'gray', borderBottomWidth: 1 }}>
+        <View style={{ marginBottom: 10, borderBottomColor: 'gray', borderBottomWidth: 1.2 }}>
           <TextInput
             style={styles.doubleInput}
             placeholder='Street address or P.O Box'
+            placeholderTextColor='gray'
             value={address}
             onChangeText={setAddress}
           />
           <TextInput
             style={styles.doubleInput}
             placeholder='Apt, Suite, Unit, Building (optional)'
+            placeholderTextColor='gray'
           />
         </View>
         <Text style={styles.label}>City</Text>
@@ -150,6 +154,7 @@ const AddAdressScreen = ({ navigation }: RootTabScreenProps<'Home'>) => {
           placeholder='Cologne'
           value={city}
           onChangeText={setCity}
+          placeholderTextColor='gray'
         />
         <Button
           buttonStyle={{ backgroundColor: '#FFD814', borderRadius: 10, height: 45 }}

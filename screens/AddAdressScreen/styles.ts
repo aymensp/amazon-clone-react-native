@@ -3,7 +3,7 @@ import { StyleSheet } from "react-native";
 export const styles = StyleSheet.create({
     container: {
         padding: 15,
-        
+
     },
     title: {
         fontSize: 26,
@@ -17,19 +17,34 @@ export const styles = StyleSheet.create({
     },
     input: {
         height: 45,
-        borderWidth: 1,
+        borderWidth: 1.2,
         borderColor: 'gray',
         fontSize: 17,
-        borderRadius: 5,
+        borderRadius: 3,
         backgroundColor: 'white',
         padding: 10,
-        marginBottom: 15
+        marginBottom: 10
+    },
+    countriesLabel: {
+        backgroundColor: '#ebebeb',
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 2,
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 3.84,
+
+        elevation: 5,
+        flexDirection:'row',
+        justifyContent:'space-between',
+        alignItems:'center'
     },
     doubleInput: {
         height: 45,
-        borderTopWidth: 1,
-        borderRightWidth: 1,
-        borderLeftWidth: 1,
+        borderTopWidth: 1.2,
+        borderRightWidth: 1.2,
+        borderLeftWidth: 1.2,
         borderColor: 'gray',
         fontSize: 17,
         backgroundColor: 'white',
