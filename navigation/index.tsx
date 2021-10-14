@@ -14,6 +14,7 @@ import LinkingConfiguration from './LinkingConfiguration';
 import ShoppingCardScreen from '../screens/ShoppingCardScreen';
 import ProductScreen from '../screens/ProductScren';
 import AddAdressScreen from '../screens/AddAdressScreen';
+import TabTwoScreen from '../screens/TabTwoScreen';
 
 export default function Navigation() {
   return (
@@ -92,6 +93,19 @@ function HomeScreenStack() {
     </HomeTab.Navigator>
   )
 }
+const ShoppinCardTab = createNativeStackNavigator<RootTabParamList>();
+function ShoppingCardScreenStack() {
+  return (
+    <HomeTab.Navigator
+      screenOptions={{
+        headerShown: false
+      }}
+    >
+      <HomeTab.Screen name='ShoppingCard' component={ShoppingCardScreen} />
+      <HomeTab.Screen name='Address' component={AddAdressScreen} />
+    </HomeTab.Navigator>
+  )
+}
 const BottomTab = createBottomTabNavigator<RootTabParamList>();
 
 function BottomTabNavigator() {
@@ -130,20 +144,20 @@ function BottomTabNavigator() {
       />
       <BottomTab.Screen
         name="TabTwo"
-        component={ShoppingCardScreen}
+        component={TabTwoScreen}
         options={{
           tabBarIcon: ({ color }) => <Ionicons name="person-outline" size={24} color={color} />,
         }}
       />
       <BottomTab.Screen
         name="ShoppingCardStack"
-        component={ShoppingCardScreen}
+        component={ShoppingCardScreenStack}
         options={{
           tabBarIcon: ({ color }) => <AntDesign name='shoppingcart' size={24} color={color} />,
         }}
       />
       <BottomTab.Screen
-        name="TabFour"
+        name="Address"
         component={AddAdressScreen}
         options={{
           tabBarIcon: ({ color }) => <Ionicons name='menu-outline' size={24} color={color} />,

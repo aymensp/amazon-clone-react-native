@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { FlatList, StyleSheet ,View} from 'react-native';
+import { ActivityIndicator, FlatList, StyleSheet ,View} from 'react-native';
 import { DataStore } from '@aws-amplify/datastore';
 import ProductItem from '../../components/ProductItem';
 import { RootTabScreenProps } from '../../types';
@@ -11,8 +11,10 @@ export default function HomeScreen({ navigation }: RootTabScreenProps<'Home'>) {
   const [products, setProducts] = useState<Product[]>([]);
   useEffect(() => {
     DataStore.query(Product).then(setProducts);
-  }, [])
-
+  }, [products])
+  if (products.length===0) {
+    return <ActivityIndicator/>
+  } 
   return (
     <View style={styles.container}>
       <FlatList

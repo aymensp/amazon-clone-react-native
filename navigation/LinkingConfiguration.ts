@@ -18,7 +18,6 @@ const linking: LinkingOptions<RootStackParamList> = {
           Home: {
             screens: {
               HomeScreen: 'one',
-              ProductScreen:'two'
             },
 
           },
