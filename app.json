@@ -12,6 +12,14 @@
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
+    "plugins" : [
+      [
+        "@stripe/stripe-react-native" , 
+        {
+          "enableooglePay" : true
+        }
+      ]
+    ],
     "updates": {
       "fallbackToCacheTimeout": 0
     },

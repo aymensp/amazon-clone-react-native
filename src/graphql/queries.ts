@@ -2,41 +2,6 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
-export const syncProducts = /* GraphQL */ `
-  query SyncProducts(
-    $filter: ModelProductFilterInput
-    $limit: Int
-    $nextToken: String
-    $lastSync: AWSTimestamp
-  ) {
-    syncProducts(
-      filter: $filter
-      limit: $limit
-      nextToken: $nextToken
-      lastSync: $lastSync
-    ) {
-      items {
-        id
-        title
-        description
-        image
-        images
-        options
-        avgRatingg
-        ratings
-        price
-        oldPrice
-        _version
-        _deleted
-        _lastChangedAt
-        createdAt
-        updatedAt
-      }
-      nextToken
-      startedAt
-    }
-  }
-`;
 export const getProduct = /* GraphQL */ `
   query GetProduct($id: ID!) {
     getProduct(id: $id) {
@@ -87,14 +52,14 @@ export const listProducts = /* GraphQL */ `
     }
   }
 `;
-export const syncCartProducts = /* GraphQL */ `
-  query SyncCartProducts(
-    $filter: ModelCartProductFilterInput
+export const syncProducts = /* GraphQL */ `
+  query SyncProducts(
+    $filter: ModelProductFilterInput
     $limit: Int
     $nextToken: String
     $lastSync: AWSTimestamp
   ) {
-    syncCartProducts(
+    syncProducts(
       filter: $filter
       limit: $limit
       nextToken: $nextToken
@@ -102,27 +67,15 @@ export const syncCartProducts = /* GraphQL */ `
     ) {
       items {
         id
-        userSub
-        qunatity
-        option
-        productID
-        product {
-          id
-          title
-          description
-          image
-          images
-          options
-          avgRatingg
-          ratings
-          price
-          oldPrice
-          _version
-          _deleted
-          _lastChangedAt
-          createdAt
-          updatedAt
-        }
+        title
+        description
+        image
+        images
+        options
+        avgRatingg
+        ratings
+        price
+        oldPrice
         _version
         _deleted
         _lastChangedAt
@@ -142,6 +95,11 @@ export const getCartProduct = /* GraphQL */ `
       qunatity
       option
       productID
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
       product {
         id
         title
@@ -159,11 +117,6 @@ export const getCartProduct = /* GraphQL */ `
         createdAt
         updatedAt
       }
-      _version
-      _deleted
-      _lastChangedAt
-      createdAt
-      updatedAt
     }
   }
 `;
@@ -180,6 +133,11 @@ export const listCartProducts = /* GraphQL */ `
         qunatity
         option
         productID
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
         product {
           id
           title
@@ -197,11 +155,155 @@ export const listCartProducts = /* GraphQL */ `
           createdAt
           updatedAt
         }
+      }
+      nextToken
+      startedAt
+    }
+  }
+`;
+export const syncCartProducts = /* GraphQL */ `
+  query SyncCartProducts(
+    $filter: ModelCartProductFilterInput
+    $limit: Int
+    $nextToken: String
+    $lastSync: AWSTimestamp
+  ) {
+    syncCartProducts(
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+      lastSync: $lastSync
+    ) {
+      items {
+        id
+        userSub
+        qunatity
+        option
+        productID
         _version
         _deleted
         _lastChangedAt
         createdAt
         updatedAt
+        product {
+          id
+          title
+          description
+          image
+          images
+          options
+          avgRatingg
+          ratings
+          price
+          oldPrice
+          _version
+          _deleted
+          _lastChangedAt
+          createdAt
+          updatedAt
+        }
+      }
+      nextToken
+      startedAt
+    }
+  }
+`;
+export const getOrderProduct = /* GraphQL */ `
+  query GetOrderProduct($id: ID!) {
+    getOrderProduct(id: $id) {
+      id
+      quantity
+      option
+      productID
+      orderID
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+      product {
+        id
+        title
+        description
+        image
+        images
+        options
+        avgRatingg
+        ratings
+        price
+        oldPrice
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+      }
+      order {
+        id
+        userSub
+        fullName
+        phoneNumber
+        country
+        city
+        address
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+      }
+    }
+  }
+`;
+export const listOrderProducts = /* GraphQL */ `
+  query ListOrderProducts(
+    $filter: ModelOrderProductFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listOrderProducts(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        quantity
+        option
+        productID
+        orderID
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+        product {
+          id
+          title
+          description
+          image
+          images
+          options
+          avgRatingg
+          ratings
+          price
+          oldPrice
+          _version
+          _deleted
+          _lastChangedAt
+          createdAt
+          updatedAt
+        }
+        order {
+          id
+          userSub
+          fullName
+          phoneNumber
+          country
+          city
+          address
+          _version
+          _deleted
+          _lastChangedAt
+          createdAt
+          updatedAt
+        }
       }
       nextToken
       startedAt
@@ -226,6 +328,12 @@ export const syncOrderProducts = /* GraphQL */ `
         quantity
         option
         productID
+        orderID
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
         product {
           id
           title
@@ -243,7 +351,6 @@ export const syncOrderProducts = /* GraphQL */ `
           createdAt
           updatedAt
         }
-        orderID
         order {
           id
           userSub
@@ -258,145 +365,6 @@ export const syncOrderProducts = /* GraphQL */ `
           createdAt
           updatedAt
         }
-        _version
-        _deleted
-        _lastChangedAt
-        createdAt
-        updatedAt
-      }
-      nextToken
-      startedAt
-    }
-  }
-`;
-export const getOrderProduct = /* GraphQL */ `
-  query GetOrderProduct($id: ID!) {
-    getOrderProduct(id: $id) {
-      id
-      quantity
-      option
-      productID
-      product {
-        id
-        title
-        description
-        image
-        images
-        options
-        avgRatingg
-        ratings
-        price
-        oldPrice
-        _version
-        _deleted
-        _lastChangedAt
-        createdAt
-        updatedAt
-      }
-      orderID
-      order {
-        id
-        userSub
-        fullName
-        phoneNumber
-        country
-        city
-        address
-        _version
-        _deleted
-        _lastChangedAt
-        createdAt
-        updatedAt
-      }
-      _version
-      _deleted
-      _lastChangedAt
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const listOrderProducts = /* GraphQL */ `
-  query ListOrderProducts(
-    $filter: ModelOrderProductFilterInput
-    $limit: Int
-    $nextToken: String
-  ) {
-    listOrderProducts(filter: $filter, limit: $limit, nextToken: $nextToken) {
-      items {
-        id
-        quantity
-        option
-        productID
-        product {
-          id
-          title
-          description
-          image
-          images
-          options
-          avgRatingg
-          ratings
-          price
-          oldPrice
-          _version
-          _deleted
-          _lastChangedAt
-          createdAt
-          updatedAt
-        }
-        orderID
-        order {
-          id
-          userSub
-          fullName
-          phoneNumber
-          country
-          city
-          address
-          _version
-          _deleted
-          _lastChangedAt
-          createdAt
-          updatedAt
-        }
-        _version
-        _deleted
-        _lastChangedAt
-        createdAt
-        updatedAt
-      }
-      nextToken
-      startedAt
-    }
-  }
-`;
-export const syncOrders = /* GraphQL */ `
-  query SyncOrders(
-    $filter: ModelOrderFilterInput
-    $limit: Int
-    $nextToken: String
-    $lastSync: AWSTimestamp
-  ) {
-    syncOrders(
-      filter: $filter
-      limit: $limit
-      nextToken: $nextToken
-      lastSync: $lastSync
-    ) {
-      items {
-        id
-        userSub
-        fullName
-        phoneNumber
-        country
-        city
-        address
-        _version
-        _deleted
-        _lastChangedAt
-        createdAt
-        updatedAt
       }
       nextToken
       startedAt
@@ -428,6 +396,38 @@ export const listOrders = /* GraphQL */ `
     $nextToken: String
   ) {
     listOrders(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        userSub
+        fullName
+        phoneNumber
+        country
+        city
+        address
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+      }
+      nextToken
+      startedAt
+    }
+  }
+`;
+export const syncOrders = /* GraphQL */ `
+  query SyncOrders(
+    $filter: ModelOrderFilterInput
+    $limit: Int
+    $nextToken: String
+    $lastSync: AWSTimestamp
+  ) {
+    syncOrders(
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+      lastSync: $lastSync
+    ) {
       items {
         id
         userSub

@@ -2,6 +2,13 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
+export const createPaymentIntent = /* GraphQL */ `
+  mutation CreatePaymentIntent($amount: Int!) {
+    createPaymentIntent(amount: $amount) {
+      clientSecret
+    }
+  }
+`;
 export const createProduct = /* GraphQL */ `
   mutation CreateProduct(
     $input: CreateProductInput!
@@ -85,6 +92,11 @@ export const createCartProduct = /* GraphQL */ `
       qunatity
       option
       productID
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
       product {
         id
         title
@@ -102,11 +114,6 @@ export const createCartProduct = /* GraphQL */ `
         createdAt
         updatedAt
       }
-      _version
-      _deleted
-      _lastChangedAt
-      createdAt
-      updatedAt
     }
   }
 `;
@@ -121,6 +128,11 @@ export const updateCartProduct = /* GraphQL */ `
       qunatity
       option
       productID
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
       product {
         id
         title
@@ -138,11 +150,6 @@ export const updateCartProduct = /* GraphQL */ `
         createdAt
         updatedAt
       }
-      _version
-      _deleted
-      _lastChangedAt
-      createdAt
-      updatedAt
     }
   }
 `;
@@ -157,6 +164,11 @@ export const deleteCartProduct = /* GraphQL */ `
       qunatity
       option
       productID
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
       product {
         id
         title
@@ -174,11 +186,6 @@ export const deleteCartProduct = /* GraphQL */ `
         createdAt
         updatedAt
       }
-      _version
-      _deleted
-      _lastChangedAt
-      createdAt
-      updatedAt
     }
   }
 `;
@@ -192,6 +199,12 @@ export const createOrderProduct = /* GraphQL */ `
       quantity
       option
       productID
+      orderID
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
       product {
         id
         title
@@ -209,7 +222,6 @@ export const createOrderProduct = /* GraphQL */ `
         createdAt
         updatedAt
       }
-      orderID
       order {
         id
         userSub
@@ -224,11 +236,6 @@ export const createOrderProduct = /* GraphQL */ `
         createdAt
         updatedAt
       }
-      _version
-      _deleted
-      _lastChangedAt
-      createdAt
-      updatedAt
     }
   }
 `;
@@ -242,6 +249,12 @@ export const updateOrderProduct = /* GraphQL */ `
       quantity
       option
       productID
+      orderID
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
       product {
         id
         title
@@ -259,7 +272,6 @@ export const updateOrderProduct = /* GraphQL */ `
         createdAt
         updatedAt
       }
-      orderID
       order {
         id
         userSub
@@ -274,11 +286,6 @@ export const updateOrderProduct = /* GraphQL */ `
         createdAt
         updatedAt
       }
-      _version
-      _deleted
-      _lastChangedAt
-      createdAt
-      updatedAt
     }
   }
 `;
@@ -292,6 +299,12 @@ export const deleteOrderProduct = /* GraphQL */ `
       quantity
       option
       productID
+      orderID
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
       product {
         id
         title
@@ -309,7 +322,6 @@ export const deleteOrderProduct = /* GraphQL */ `
         createdAt
         updatedAt
       }
-      orderID
       order {
         id
         userSub
@@ -324,11 +336,6 @@ export const deleteOrderProduct = /* GraphQL */ `
         createdAt
         updatedAt
       }
-      _version
-      _deleted
-      _lastChangedAt
-      createdAt
-      updatedAt
     }
   }
 `;

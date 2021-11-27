@@ -1,4 +1,4 @@
-type Product @model @auth(rules: [{allow: public}]){
+type Product @model @auth(rules: [{ allow: public }]) {
   id: ID!
   title: String!
   description: String
@@ -10,14 +10,19 @@ type Product @model @auth(rules: [{allow: public}]){
   price: Float!
   oldPrice: Float
 }
-
-type CartProduct @model @auth(rules: [{allow: public}])  {
+type Mutation {
+  createPaymentIntent(amount: Int!): PaymentIntent! @function(name: "CreatePaymentIntent-${env}")
+}
+type PaymentIntent {
+  clientSecret: String
+}
+type CartProduct @model @auth(rules: [{ allow: public }]) {
   id: ID!
   userSub: String!
   qunatity: Int!
   option: String
   productID: ID!
-  product: Product @connection(fields : ["productID"])
+  product: Product @connection(fields: ["productID"])
 }
 
 type OrderProduct @model @auth(rules: [{ allow: public }]) {
@@ -39,4 +44,3 @@ type Order @model @auth(rules: [{ allow: public }]) {
   city: String
   address: String
 }
- 

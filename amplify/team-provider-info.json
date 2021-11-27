@@ -14,6 +14,12 @@
     "categories": {
       "auth": {
         "amazonclone75c795ce": {}
+      },
+      "function": {
+        "CreatePaymentIntent": {
+          "deploymentBucketName": "amplify-amazonclone-dev-231447-deployment",
+          "s3Key": "amplify-builds/CreatePaymentIntent-586e7433313572504f5a-build.zip"
+        }
       }
     }
   }

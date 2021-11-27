@@ -73,6 +73,11 @@ export const onCreateCartProduct = /* GraphQL */ `
       qunatity
       option
       productID
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
       product {
         id
         title
@@ -90,11 +95,6 @@ export const onCreateCartProduct = /* GraphQL */ `
         createdAt
         updatedAt
       }
-      _version
-      _deleted
-      _lastChangedAt
-      createdAt
-      updatedAt
     }
   }
 `;
@@ -106,6 +106,11 @@ export const onUpdateCartProduct = /* GraphQL */ `
       qunatity
       option
       productID
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
       product {
         id
         title
@@ -123,11 +128,6 @@ export const onUpdateCartProduct = /* GraphQL */ `
         createdAt
         updatedAt
       }
-      _version
-      _deleted
-      _lastChangedAt
-      createdAt
-      updatedAt
     }
   }
 `;
@@ -139,6 +139,11 @@ export const onDeleteCartProduct = /* GraphQL */ `
       qunatity
       option
       productID
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
       product {
         id
         title
@@ -156,11 +161,6 @@ export const onDeleteCartProduct = /* GraphQL */ `
         createdAt
         updatedAt
       }
-      _version
-      _deleted
-      _lastChangedAt
-      createdAt
-      updatedAt
     }
   }
 `;
@@ -171,6 +171,12 @@ export const onCreateOrderProduct = /* GraphQL */ `
       quantity
       option
       productID
+      orderID
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
       product {
         id
         title
@@ -188,7 +194,6 @@ export const onCreateOrderProduct = /* GraphQL */ `
         createdAt
         updatedAt
       }
-      orderID
       order {
         id
         userSub
@@ -203,11 +208,6 @@ export const onCreateOrderProduct = /* GraphQL */ `
         createdAt
         updatedAt
       }
-      _version
-      _deleted
-      _lastChangedAt
-      createdAt
-      updatedAt
     }
   }
 `;
@@ -218,6 +218,12 @@ export const onUpdateOrderProduct = /* GraphQL */ `
       quantity
       option
       productID
+      orderID
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
       product {
         id
         title
@@ -235,7 +241,6 @@ export const onUpdateOrderProduct = /* GraphQL */ `
         createdAt
         updatedAt
       }
-      orderID
       order {
         id
         userSub
@@ -250,11 +255,6 @@ export const onUpdateOrderProduct = /* GraphQL */ `
         createdAt
         updatedAt
       }
-      _version
-      _deleted
-      _lastChangedAt
-      createdAt
-      updatedAt
     }
   }
 `;
@@ -265,6 +265,12 @@ export const onDeleteOrderProduct = /* GraphQL */ `
       quantity
       option
       productID
+      orderID
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
       product {
         id
         title
@@ -282,7 +288,6 @@ export const onDeleteOrderProduct = /* GraphQL */ `
         createdAt
         updatedAt
       }
-      orderID
       order {
         id
         userSub
@@ -297,11 +302,6 @@ export const onDeleteOrderProduct = /* GraphQL */ `
         createdAt
         updatedAt
       }
-      _version
-      _deleted
-      _lastChangedAt
-      createdAt
-      updatedAt
     }
   }
 `;
