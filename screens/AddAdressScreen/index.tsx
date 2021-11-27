@@ -79,7 +79,6 @@ const AddAdressScreen = ({ navigation }: RootTabScreenProps<'Home'>) => {
     setCountry(item);
     setModalVisible(!modalVisible)
   }
-  console.log(countries)
   return (
 
     <KeyboardAvoidingView
