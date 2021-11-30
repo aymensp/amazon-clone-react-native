@@ -19,6 +19,10 @@
         "CreatePaymentIntent": {
           "deploymentBucketName": "amplify-amazonclone-dev-231447-deployment",
           "s3Key": "amplify-builds/CreatePaymentIntent-586e7433313572504f5a-build.zip"
+        },
+        "StripeWebHook": {
+          "deploymentBucketName": "amplify-amazonclone-dev-231447-deployment",
+          "s3Key": "amplify-builds/StripeWebHook-6a4d626967416b386851-build.zip"
         }
       }
     }

@@ -25,7 +25,7 @@ import { useStripe } from "@stripe/stripe-react-native";
 
 const countries = countryList.getData();
 
-const AddAdressScreen = ({ navigation }: RootTabScreenProps<"Home">) => {
+const AddAdressScreen = ({ route , navigation }: RootTabScreenProps<"Address">) => {
   const [country, setCountry] = useState(countries[0].name);
   const [fullname, setFullname] = useState("");
   const [phone, setPhone] = useState("");
@@ -36,6 +36,8 @@ const AddAdressScreen = ({ navigation }: RootTabScreenProps<"Home">) => {
   const [modalVisible, setModalVisible] = useState(false);
   const [clientSecret, setclientSecret] = useState<string | null>(null);
 
+  const totalPrice = route.params  ; 
+  const amount = Math.floor(totalPrice*100);
   const { initPaymentSheet, presentPaymentSheet } = useStripe();
 
   const toggleModal = () => {
@@ -44,7 +46,7 @@ const AddAdressScreen = ({ navigation }: RootTabScreenProps<"Home">) => {
 
   const fetchPaymentIntent = async () => {
     const response = await API.graphql(
-      graphqlOperation(createPaymentIntent, 20)
+      graphqlOperation(createPaymentIntent, { amount: amount })
     );
     setclientSecret(response.data.createPaymentIntent.clientSecret);
   };
@@ -123,12 +125,15 @@ const AddAdressScreen = ({ navigation }: RootTabScreenProps<"Home">) => {
     await Promise.all(cartItems.map((cartItem) => DataStore.delete(cartItem)));
 
     // redirect home
+
+    navigation.navigate("Home");
   };
 
   const SelectCountry = (item: string) => {
     setCountry(item);
     setModalVisible(!modalVisible);
   };
+ const _keyExtractor = (item : any, index : any) => item.name;
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === "ios" ? "padding" : "height"}
@@ -167,6 +172,7 @@ const AddAdressScreen = ({ navigation }: RootTabScreenProps<"Home">) => {
             </View>
             <FlatList
               data={countries}
+              keyExtractor={_keyExtractor}
               renderItem={({ item }) => (
                 <Pressable
                   onPress={() => SelectCountry(item.name)}
