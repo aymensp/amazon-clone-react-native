@@ -1,4 +1,4 @@
-# Amazon Clone (Amawon Amplify + React Native )
+# Amazon Clone (Aws Amplify + GraphQL + Stripe + AWS Lambda Functions + React Native )
 
 ### Show some  <img src="https://github.githubassets.com/images/icons/emoji/unicode/2764.png" width="30" height="30" />   and star the repo to support the project
 
