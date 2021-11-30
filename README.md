@@ -4,9 +4,25 @@
 
 ### Products List
 
+![home](https://user-images.githubusercontent.com/49190728/143970334-4342a90e-6f66-4b92-9909-57dec58897b9.gif)
+
+### Product Details
+
+![add to cart](https://user-images.githubusercontent.com/49190728/143970416-15ec55be-5e05-4ae9-9585-3152c237e711.gif)
+
 
 ### Address Form
 
+![address](https://user-images.githubusercontent.com/49190728/143970365-d0427bda-d520-4e44-9917-356cde1475c4.gif)
+
+
+### Checkout 
+
+![goToPayment](https://user-images.githubusercontent.com/49190728/143970591-a2da1ec2-cc04-407e-9cdd-074717af23c6.gif)
+
+### Payment
+
+![payment](https://user-images.githubusercontent.com/49190728/143970611-d751a877-70fd-451a-a797-ad1fd89ef3b0.gif)
 
 
 ### Created & Maintained By
