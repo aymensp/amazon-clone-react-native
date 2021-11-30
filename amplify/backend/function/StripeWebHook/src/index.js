@@ -26,7 +26,7 @@ exports.handler = async (event) => {
     //      "Access-Control-Allow-Origin": "*",
     //      "Access-Control-Allow-Headers": "*"
     //  },
-    body: { recieved: true },
+    body: JSON.stringify({recieved : true}),
   };
   return response;
 };
